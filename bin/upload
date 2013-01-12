@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php
+
+include_once __DIR__ . '/../vendor/autoload.php';
+
+use Buzz\Browser;
+use Buzz\Client\Curl;
+use Endurance\Strava\StravaClient;
+
+$email = $argv[1];
+$password = $argv[2];
+
+$browser = new Browser(new Curl());
+
+try {
+    $client = new StravaClient($browser);
+    $client->signIn($email, $password);
+} catch (RuntimeException $exception) {
+    print sprintf("Error: %s\n", $exception->getMessage());
+}

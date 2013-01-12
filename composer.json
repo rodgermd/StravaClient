@@ -1,0 +1,20 @@
+{
+    "name": "noginn/strava-client",
+    "type": "library",
+    "description": "A simple PHP library to interact with the Strava API",
+    "keywords": ["cycling", "training", "gps", "garmin", "strava"],
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tom Graham"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "kriswallsmith/buzz": ">=0.7"
+    },
+    "autoload": {
+        "psr-0": { "Endurance\\Strava": "src" }
+    }
+}
