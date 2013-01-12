@@ -4,7 +4,6 @@ namespace Endurance\Strava;
 
 use Buzz\Browser;
 use Buzz\Message\Form\FormRequest;
-use Buzz\Message\Form\FormUpload;
 use Buzz\Message\Response;
 use Buzz\Util\Url;
 
@@ -68,11 +67,9 @@ class StravaClient
         // Set the form fields
         $request->setField('token', $this->token);
         $request->setField('type', 'fit');
-        $request->setField('activity_type', 'ride');
 
-        $data = new FormUpload($file);
-        $data->setContentType('image/x-fits');
-        $request->setField('data', $data);
+        // Not using FormUpload as the Strava API expects the data as a field value
+        $request->setField('data', file_get_contents($file));
 
         $response = new Response();
         $this->browser->getClient()->send($request, $response);
