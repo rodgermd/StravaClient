@@ -9,12 +9,14 @@ use Endurance\Strava\StravaClient;
 
 $email = $argv[1];
 $password = $argv[2];
+$file = $argv[3];
 
 $browser = new Browser(new Curl());
 
 try {
     $client = new StravaClient($browser);
     $client->signIn($email, $password);
+    $client->uploadActivity($file);
 } catch (RuntimeException $exception) {
     print sprintf("Error: %s\n", $exception->getMessage());
 }
