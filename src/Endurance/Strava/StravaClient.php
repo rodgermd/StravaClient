@@ -16,6 +16,12 @@ class StravaClient
     public function __construct(Browser $browser)
     {
         $this->browser = $browser;
+        
+        // Set client options
+        $client = $this->browser->getClient();
+
+        // Remove the timeout to allow time to download large files
+        $client->setTimeout(0);
     }
 
     public function signIn($email, $password)
