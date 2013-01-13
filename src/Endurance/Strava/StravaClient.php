@@ -4,6 +4,7 @@ namespace Endurance\Strava;
 
 use Buzz\Browser;
 use Buzz\Message\Form\FormRequest;
+use Buzz\Message\Request;
 use Buzz\Message\Response;
 use Buzz\Util\Url;
 
@@ -73,6 +74,25 @@ class StravaClient
 
         $response = new Response();
         $this->browser->getClient()->send($request, $response);
+
+        return json_decode($response->getContent(), true);
+    }
+
+    public function getMap($rideId)
+    {
+        if (!$this->isSignedIn()) {
+            throw new \RuntimeException('Not signed in');
+        }
+        
+        $response = $this->browser->get("http://www.strava.com/api/v2/rides/$rideId/map_details?token={$this->token}");
+
+        return json_decode($response->getContent(), true);
+    }
+
+    public function getRideDetails($rideId)
+    {
+        // Doesn't require authentication
+        $response = $this->browser->get("http://www.strava.com/api/v2/rides/$rideId");
 
         return json_decode($response->getContent(), true);
     }
