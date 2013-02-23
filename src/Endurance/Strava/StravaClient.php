@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Endurance\Strava;
 
@@ -16,7 +16,7 @@ class StravaClient
     public function __construct(Browser $browser)
     {
         $this->browser = $browser;
-        
+
         // Set client options
         $client = $this->browser->getClient();
 
@@ -83,7 +83,7 @@ class StravaClient
         if (!$this->isSignedIn()) {
             throw new \RuntimeException('Not signed in');
         }
-        
+
         $response = $this->browser->get("http://www.strava.com/api/v2/rides/$rideId/map_details?token={$this->token}");
 
         return json_decode($response->getContent(), true);
