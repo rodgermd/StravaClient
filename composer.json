@@ -1,5 +1,5 @@
 {
-    "name": "noginn/strava-client",
+    "name": "rodgermd/strava-client",
     "type": "library",
     "description": "A simple PHP library to interact with the Strava API",
     "keywords": ["cycling", "training", "gps", "garmin", "strava"],
