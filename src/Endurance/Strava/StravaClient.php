@@ -91,7 +91,7 @@ class StravaClient
     return json_decode($response->getContent(), true);
   }
 
-  public function getRideDetails($rideId)
+  public function getRideDetailsV2($rideId)
   {
     // Doesn't require authentication
     $response = $this->browser->get("http://www.strava.com/api/v2/rides/$rideId");
@@ -170,7 +170,7 @@ class StravaClient
    * @param $id
    * @return array
    */
-  public function getEffortDetails($id)
+  public function getRideDetails($id)
   {
     $response = $this->browser->get("http://www.strava.com/api/v1/rides/$id");
 
