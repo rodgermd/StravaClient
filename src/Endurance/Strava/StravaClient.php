@@ -147,7 +147,7 @@ class StravaClient
   public function getRiderEfforts($athlete_id, $offset = 0)
   {
     $url = "http://www.strava.com/api/v1/rides?athleteId=$athlete_id";
-    if ($offset) if ($offset) $url .= "?offset=$offset";
+    if ($offset) if ($offset) $url .= "&offset=$offset";
 
     $response = $this->browser->get($url);
 
